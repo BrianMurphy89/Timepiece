@@ -1,0 +1,22 @@
+<div id="nav-container">
+    <nav>
+        <div id="logo-container">
+            <img ng-src="" alt="">
+        </div>
+        <div id="site-name">
+            <h1>TimePiece</h1>
+        </div>
+        <div id="nav-links">
+            <a ng-if="ctrl.loggedInUser" ng-click="ctrl.showHome()"href="#">Home</a>
+            <a ng-click="ctrl.showLogin()" href="#" ng-if="!ctrl.loggedInUser">Login</a>
+            <a ng-click="ctrl.showSignUp()" href="#" ng-if="!ctrl.loggedInUser">Sign Up</a>
+            <a ng-if="ctrl.loggedInUser" href="#" ng-click="ctrl.showProfile">Profile</a>
+            <a ng-if="ctrl.loggedInUser" href="#" ng-click="ctrl.endSession">Log Out</a>
+        </div>
+    </nav>
+</div>
+
+<div ng-if="ctrl.currentPage === 'home'" ng-include="'views/home.html'"></div>
+<div ng-if="ctrl.currentPage === 'login'" ng-include="'views/login.html'"></div>
+<div ng-if="ctrl.currentPage === 'signup'" ng-include="'views/signup.html'"></div>
+<div ng-if="ctrl.currentPage === 'profile'" ng-include="'views/profile.html'"></div>

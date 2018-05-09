@@ -10,6 +10,24 @@ app.controller('mainController', ['$http', function($http){
         this.editing = !this.editing;
     }
 
+    this.currentPage = 'login'
+    this.showHome = () => {
+        this.currentPage = 'home'
+    }
+
+    this.showLogin = () => {
+        this.currentPage = 'login'
+    }
+
+    this.showSignUp = () => {
+        this.currentPage = 'signup'
+    }
+
+    this.showProfile = () => {
+        this.currentPage = 'profile'
+    }
+
+
     this.getWatches = () => {
         $http({
             method:'GET',
@@ -36,7 +54,7 @@ app.controller('mainController', ['$http', function($http){
         }).catch(err => console.error('Catch', err))
     }
 
-    this.editWatch = () => {
+    this.editWatch = (id) => {
         $http({
             method:'PUT',
             url:'/timepiece/' + id,
