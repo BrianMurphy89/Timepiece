@@ -1,0 +1,46 @@
+<div class="backgroundColor">
+    <div class="container" id="show-container">
+        <img ng-src="{{ctrl.singleWatch.image}}" alt="{{ctrl.singleWatch.brand}}">
+        <h4>{{ctrl.singleWatch.brand}}</h4>
+        <h5>{{ctrl.singleWatch.model}}</h5>
+        <p>{{ctrl.singleWatch.description}}</p>
+        <button class="button is-warning is-small is-rounded "ng-click="ctrl.toggleEdit()">Edit Watch</button>
+        <button class="button is-danger is-small is-rounded "ng-click="ctrl.deleteWatch(ctrl.singleWatch._id)" name="button">Delete Watch</button>
+        <button class="button is-small is-dark is-rounded"type="button" ng-click="ctrl.toggleShow()">Back to Watches</button>
+    </div>
+
+    <div ng-if="ctrl.editing">
+        <div class="container" id="editForm">
+        <form ng-submit="ctrl.editWatch(ctrl.singleWatch._id)">
+            <div class="field">
+                <label for="brand">Brand</label>
+                <div class="control">
+                    <input class="input" type="text" ng-model="ctrl.editedBrand" placeholder="e.g. Breitling, Rolex, Movado, Omega">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="model">Model</label>
+                <div class="control">
+                    <input class="input" type="text" ng-model="ctrl.editedModel" placeholder="e.g. Submariner, Chronomat">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="image">Image Url:</label>
+                <div class="control">
+                    <input class="input" type="text" ng-model="ctrl.editedImage" placeholder="e.g. http://www.google.com">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="description">Description</label>
+                <div class="control">
+                    <input class="input"type="text" ng-model="ctrl.editedDescription" placeholder="e.g. If I won the lottery, this would be the first watch I would buy!">
+                </div>
+            </div>
+            <button class="button is-success is-small is-rounded"type="submit" name="button">Submit Changes</button>
+        </form>
+        </div>
+    </div>
+</div>

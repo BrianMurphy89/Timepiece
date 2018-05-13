@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 id="sitename">Timepiece</h1>
+    <nav class="navbar">
+        <a ng-if="ctrl.loggedInUser" ng-click="ctrl.showHome()"href="#">Home</a>
+        <a ng-click="ctrl.showLogin()" href="#" ng-if="!ctrl.loggedInUser">Login</a>
+        <a ng-click="ctrl.showSignUp()" href="#" ng-if="!ctrl.loggedInUser">Sign Up</a>
+        <a ng-if="ctrl.loggedInUser" href="#" ng-click="ctrl.showProfile">Profile</a>
+        <a ng-if="ctrl.loggedInUser" href="#" ng-click="ctrl.endSession">Log Out</a>
+    </nav>
+</div>
+
+<div ng-if="ctrl.currentPage === 'home'" ng-include="'../views/partials/home.html'"></div>
+<div ng-if="ctrl.currentPage === 'login'" ng-include="'../views/partials/login.html'"></div>
+<div ng-if="ctrl.currentPage === 'signup'" ng-include="'../views/partials/signup.html'"></div>
+<div ng-if="ctrl.currentPage === 'profile'" ng-include="'../views/partials/profile.html'"></div>

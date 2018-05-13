@@ -1,4 +1,4 @@
-const app = angular.module('WatchApp', ['ngRoute'])
+const app = angular.module('watchApp', ['ngRoute']);
 
 
 app.controller('mainController', ['$http', function($http){
@@ -6,11 +6,21 @@ app.controller('mainController', ['$http', function($http){
     this.allWatches = [];
     this.formData = {};
     this.indexOfEditFormToShow = null;
+    this.editing = false;
+    this.showing = true;
+    this.isShowing = false;
+    this.singleWatch = [];
+
     this.toggleEdit = () => {
         this.editing = !this.editing;
     }
 
-    this.currentPage = 'login'
+    this.toggleShow = () => {
+        this.showing = !this.showing;
+        this.isShowing = !this.isShowing;
+    }
+
+    this.currentPage = 'home'
     this.showHome = () => {
         this.currentPage = 'home'
     }
@@ -34,8 +44,23 @@ app.controller('mainController', ['$http', function($http){
             url:'/timepiece'
         }).then((response) => {
             this.allWatches = response.data
+            this.singleWatch = []
         }, error => {
             console.error(error);
+        }).catch(err => console.error('Catch', err))
+    }
+
+    this.getWatches();
+
+    this.getSingleWatch = (id) => {
+        $http({
+            method:'GET',
+            url:'/timepiece/' + id
+        }).then((res) => {
+            this.singleWatch = res.data
+            console.log(this.singleWatch);
+        }, error => {
+            console.error(error)
         }).catch(err => console.error('Catch', err))
     }
 
@@ -55,6 +80,7 @@ app.controller('mainController', ['$http', function($http){
     }
 
     this.editWatch = (id) => {
+        console.log(id);
         $http({
             method:'PUT',
             url:'/timepiece/' + id,
@@ -75,6 +101,7 @@ app.controller('mainController', ['$http', function($http){
     }
 
     this.deleteWatch = (id) => {
+        console.log(id);
         $http({
             method:'DELETE',
             url:'/timepiece/' + id
@@ -82,6 +109,7 @@ app.controller('mainController', ['$http', function($http){
             const removeByIndex =
             this.allWatches.findIndex(watch => watch._id === id);
             this.allWatches.splice(removeByIndex, 1);
+            this.toggleShow();
         }, error => {
             console.error(error)
         }).catch(err => console.error('Catch', err))

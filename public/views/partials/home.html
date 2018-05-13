@@ -1,0 +1,27 @@
+<div id="createForm">
+    <form ng-submit="ctrl.createWatch()">
+        <label for="brand">Brand Name</label>
+        <input type="text" ng-model="ctrl.formData.brand">
+        <label for="model">Model Name</label>
+        <input type="text" ng-model="ctrl.formData.model">
+        <label for="image">Image Url:</label>
+        <input type="text" ng-model="ctrl.formData.image">
+        <label for="description">Description</label>
+        <input type="text" ng-model="ctrl.formData.description">
+        <button type="submit">Add Watch To List</button>
+    </form>
+</div>
+
+<div ng-if="ctrl.showing">
+    <div class="backgroundColor">
+        <div class="container" id="home-page-container">
+            <div ng-repeat="list in ctrl.allWatches">
+                <img ng-src="{{list.image}}" ng-click="ctrl.getSingleWatch(list._id); ctrl.toggleShow()">
+                <h4>{{list.brand}}</h4>
+                <h5>{{list.model}}</h5>
+                <p>{{list.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="ctrl.isShowing" ng-include="'views/partials/show.html'"></div>

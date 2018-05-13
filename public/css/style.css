@@ -1,0 +1,49 @@
+
+#home-page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 1%;
+}
+
+#show-container {
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+#createForm {
+    margin-left: 5%;
+}
+
+#editForm {
+    padding-bottom: 1%;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container {
+    text-align: center;
+}
+
+
+img {
+    height: 150px;
+    width: 150px;
+    border-radius: 5%;
+}
+
+p, h4, h5 {
+    color: white;
+}
+
+.backgroundColor {
+    background: rgb(7,19,242);
+    background: linear-gradient(152deg, rgba(7,19,242,1) 0%, rgba(21,23,32,1) 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 800px;
+}
